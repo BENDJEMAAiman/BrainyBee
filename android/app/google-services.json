@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "774974757050",
+    "project_id": "brainybee-41",
+    "storage_bucket": "brainybee-41.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:774974757050:android:13aa894e5dcb2be1ee0a83",
+        "android_client_info": {
+          "package_name": "com.example.mobile_app_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6Zr9jHu3g4jk5T3SZJFRUts8lLv0P6Y8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
