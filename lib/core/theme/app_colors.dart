@@ -33,7 +33,7 @@ class AppColors {
   static const Color textSecondary = Color(0xFF7A726B);
 
   // ---------------------------------------------------------------------------
-  // Roles: what each palette color MEANS in the app
+  // Roles: what each color MEANS in the app
   // ---------------------------------------------------------------------------
   /// Main buttons and active elements.
   static const Color primary = canyon;
@@ -47,6 +47,17 @@ class AppColors {
   /// Text/icons placed on top of [done]. Dark, because white on olive is hard
   /// to read.
   static const Color onDone = textPrimary;
+
+  /// Dark olive for text and icons that sit on a LIGHT olive tint (for example
+  /// the "Done today" group). The plain [done] color is too faint for text.
+  static const Color doneText = Color(0xFF66651F);
+
+  /// Late homework: used for the tinted container and its outline and icons.
+  static const Color missed = Color(0xFFD64545);
+
+  /// Text on a light red tint (for example "2 days late"). Darker than
+  /// [missed] so small text stays readable.
+  static const Color missedText = Color(0xFFB42318);
 
   /// Studies page: timetable, homework.
   static const Color studies = morningSky;
