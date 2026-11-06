@@ -10,7 +10,7 @@ class AppTextStyles {
     fontFamily: 'Nunito',
     fontSize: 23.sp,
     fontWeight: FontWeight.w800,
-    color: AppColors.primary,
+    color: AppColors.headingLarge,
     height: 40 / 23,
     letterSpacing: 0,
   );
@@ -20,7 +20,7 @@ class AppTextStyles {
     fontFamily: 'Nunito',
     fontSize: 18.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.primary,
+    color: AppColors.headingMedium,
     height: 40 / 18,
     letterSpacing: 0,
   );
@@ -30,7 +30,7 @@ class AppTextStyles {
     fontFamily: 'Inter',
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
-    color: AppColors.primary,
+    color: AppColors.textFieldLabel,
     height: 1.0,
     letterSpacing: 0,
   );
@@ -40,7 +40,7 @@ class AppTextStyles {
     fontFamily: 'Inter',
     fontSize: 13.sp,
     fontWeight: FontWeight.w700,
-    color: Colors.white,
+    color: AppColors.buttonPrimary,
     height: 18 / 13,
     letterSpacing: 0.8,
   );
@@ -50,7 +50,7 @@ class AppTextStyles {
     fontFamily: 'Inter',
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
-    color: AppColors.primary,
+    color: AppColors.termsText,
     height: 20 / 14,
     letterSpacing: 0,
   );
@@ -60,7 +60,7 @@ class AppTextStyles {
     fontFamily: 'Inter',
     fontSize: 14.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.primary,
+    color: AppColors.termsHighlight,
     height: 20 / 14,
     letterSpacing: 0,
   );
@@ -70,7 +70,7 @@ class AppTextStyles {
     fontFamily: 'Inter',
     fontSize: 12.sp,
     fontWeight: FontWeight.w500,
-    color: AppColors.primary,
+    color: AppColors.privacyText,
     height: 20 / 12,
     letterSpacing: 0,
   );
