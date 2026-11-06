@@ -15,6 +15,7 @@ class AppColors {
   static const Color privacyText = Color(0xFFAFAFAF);
   static const Color authFooterHighlight = Color(0xFF1CB0F6);
 
+  static const Color amberMain = Color(0xFFFFB800);
 
 
 
