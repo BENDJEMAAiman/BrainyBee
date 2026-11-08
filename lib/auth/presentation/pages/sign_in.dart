@@ -14,6 +14,7 @@ import 'package:mobile_app_project/auth/presentation/widgets/auth_scaffold.dart'
 import 'package:mobile_app_project/auth/presentation/widgets/auth_terms_text.dart';
 import 'package:mobile_app_project/auth/presentation/widgets/auth_text_field.dart';
 import 'package:mobile_app_project/auth/presentation/widgets/google_auth_button.dart';
+import 'package:mobile_app_project/core/routing/routes.dart';
 import 'package:mobile_app_project/core/theme/app_text_styles.dart';
 
 
@@ -59,12 +60,12 @@ class _SignInPageState extends State<SignInPage> {
       listener: (context, state) {
         // Successful authentication
         if (state is Authenticated) {
-          context.go('/home');
+          context.go(Routes.signIn); //need to be changed later to home 
         }
 
         // Email verification required
         else if (state is EmailVerificationRequired) {
-          context.go('/check-email');
+          context.go(Routes.checkEmail);
         }
 
         // Authentication error
@@ -129,7 +130,7 @@ class _SignInPageState extends State<SignInPage> {
                   textInputAction: TextInputAction.done,
                   validator: AuthValidators.password,
                   onForgotPassword: () {
-                    context.push('/forgot-password');
+                    context.push(Routes.forgotPassword);
                   },
                 ),
 
@@ -159,10 +160,10 @@ class _SignInPageState extends State<SignInPage> {
                 // Terms and privacy
                 AuthTermsText(
                   onTermsTap: () {
-                    context.push('/terms');
+                    context.push(Routes.terms);
                   },
                   onPrivacyTap: () {
-                    context.push('/privacy');
+                    context.push(Routes.privacy);
                   },
                 ),
 
@@ -173,7 +174,7 @@ class _SignInPageState extends State<SignInPage> {
                   message: "Don't have an account yet? ",
                   actionText: 'Create a parent account',
                   onActionTap: () {
-                    context.push('/sign-up');
+                    context.push(Routes.signUp);
                   },
                 ),
 
