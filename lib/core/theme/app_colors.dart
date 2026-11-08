@@ -17,6 +17,10 @@ class AppColors {
 
   static const Color amberMain = Color(0xFFFFB800);
 
+  static const Color textFieldBackground = Color(0xFFF7F7F7);
+  static const Color textFieldBorder = Color(0xFFE5E5E5);
 
-
+  static const Color primaryButtonBackground = Color(0xFF1CB0F6);
+  static const Color primaryButtonText = Color(0xFFFFFFFF);
+  static const Color primaryButtonShadow = Color(0xFF1899D6);
 }

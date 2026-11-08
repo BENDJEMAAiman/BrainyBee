@@ -74,4 +74,14 @@ class AppTextStyles {
     height: 20 / 12,
     letterSpacing: 0,
   );
+
+  /// Authentication footer - Nunito SemiBold
+  static final authFooter = TextStyle(
+    fontFamily: 'Nunito',
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.headingMedium,
+    height: 20 / 18,
+    letterSpacing: 0,
+  );
 }
