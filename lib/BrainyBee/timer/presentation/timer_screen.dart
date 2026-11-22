@@ -10,11 +10,11 @@ import 'package:mobile_app_project/core/theme/app_colors.dart';
 /// The timer page: a big countdown ring, a duration choice, and buttons.
 ///
 /// This screen owns NO timing logic. It draws the [snapshot] it receives and
-/// reports what the user did through the callbacks. For now a preview file
-/// supplies a fake ticking timer; later a Cubit will do the real counting.
+/// reports what the user did through the callbacks. The [TimerCubit] (through
+/// the timer page) does the real counting.
 ///
 /// If [homeworkTitle] is given, a "Working on" card shows it, and the finished
-/// panel offers to mark that homework as done.
+/// panel offers to mark that homework as done (unless [homeworkMarkedDone]).
 class TimerScreen extends StatelessWidget {
   const TimerScreen({
     super.key,
@@ -29,6 +29,7 @@ class TimerScreen extends StatelessWidget {
     required this.onFinish,
     this.homeworkTitle,
     this.homeworkSubject,
+    this.homeworkMarkedDone = false,
   });
 
   final TimerSnapshot snapshot;
@@ -36,6 +37,10 @@ class TimerScreen extends StatelessWidget {
   /// The homework this session is for, if any.
   final String? homeworkTitle;
   final String? homeworkSubject;
+
+  /// True once the homework was marked done, so the button is not offered
+  /// again.
+  final bool homeworkMarkedDone;
 
   /// The user chose a focus length (only possible before starting).
   final ValueChanged<int> onSelectMinutes;
@@ -115,7 +120,7 @@ class TimerScreen extends StatelessWidget {
                 if (isFinished)
                   TimerFinishedPanel(
                     snapshot: snapshot,
-                    hasHomework: title != null,
+                    hasHomework: title != null && !homeworkMarkedDone,
                     onMarkHomeworkDone: onMarkHomeworkDone,
                     onStartBreak: onStartBreak,
                     onStartAnother: onReset,
