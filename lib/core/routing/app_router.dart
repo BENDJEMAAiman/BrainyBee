@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-
+import 'package:mobile_app_project/auth/presentation/pages/congratulations.dart';
 
 import 'package:mobile_app_project/auth/presentation/pages/sign_in.dart';
 import 'package:mobile_app_project/auth/presentation/pages/forgot_password_page.dart';
@@ -37,6 +37,15 @@ final GoRouter appRouter = GoRouter(
 
         return CheckEmailPage(email: email);
       },
+    ),
+
+    GoRoute(
+      path: Routes.congratulations,
+      builder: (context, state) => CongratulationsPage(
+        onContinue: () {
+          // We'll add the child setup navigation here later.
+        },
+      ),
     ),
   ],
 );

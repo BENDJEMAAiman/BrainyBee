@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:mobile_app_project/auth/business_logic/auth_cubit.dart';
 import 'package:mobile_app_project/auth/business_logic/auth_state.dart';
 import 'package:mobile_app_project/auth/presentation/widgets/auth_scaffold.dart';
+import 'package:mobile_app_project/core/routing/routes.dart';
 
 import 'package:mobile_app_project/core/theme/app_colors.dart';
 import 'package:mobile_app_project/core/theme/app_text_styles.dart';
 
+import 'package:mobile_app_project/auth/presentation/widgets/auth_primary_button.dart';
+
 class CheckEmailPage extends StatelessWidget {
   final String email;
 
-  const CheckEmailPage({
-    super.key,
-    required this.email,
-  });
+  const CheckEmailPage({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +32,22 @@ class CheckEmailPage extends StatelessWidget {
 
         if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-              backgroundColor: Colors.red,
+            SnackBar(content: Text(state.message), backgroundColor: Colors.red),
+          );
+        }
+
+        if (state is EmailVerificationRequired) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text(
+                'Your email is not verified yet. Please check your inbox.',
+              ),
             ),
           );
+        }
+
+        if (state is Authenticated) {
+          context.go(Routes.congratulations);
         }
       },
       builder: (context, state) {
@@ -90,9 +102,7 @@ class CheckEmailPage extends StatelessWidget {
                     onTap: isLoading
                         ? null
                         : () {
-                            context
-                                .read<AuthCubit>()
-                                .sendEmailVerification();
+                            context.read<AuthCubit>().sendEmailVerification();
                           },
                     child: Text(
                       isLoading ? 'Sending...' : 'Resend',
@@ -109,6 +119,18 @@ class CheckEmailPage extends StatelessWidget {
                 SizedBox(height: 24.h),
                 const CircularProgressIndicator(),
               ],
+
+              SizedBox(height: 32.h),
+
+              AuthPrimaryButton(
+                text: "I've Verified",
+                isLoading: isLoading,
+                onPressed: isLoading
+                    ? null
+                    : () {
+                        context.read<AuthCubit>().checkAuthStatus();
+                      },
+              ),
             ],
           ),
         );

@@ -16,5 +16,7 @@ class Routes {
 
   // Legal pages
   static const String terms = '/terms';
-  static const String privacy = '/privacy';
+  static const String privacy = '/privacy'; 
+
+  static const String congratulations = '/congratulations';
 }
