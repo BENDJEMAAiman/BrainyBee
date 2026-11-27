@@ -19,7 +19,7 @@ final GoRouter appRouter = GoRouter(
 
     // Sign Up
     GoRoute(
-      path: Routes.signIn,
+      path: Routes.signUp,
       builder: (context, state) => const SignUpPage(),
     ),
 

@@ -85,7 +85,10 @@ class _SignUpPageState extends State<SignUpPage> {
 
         // Email verification required
         else if (state is EmailVerificationRequired) {
-          context.go(Routes.checkEmail);
+          context.go(
+            Routes.checkEmail,
+            extra: _emailController.text.trim(), // Pass the email here
+          );
         }
 
         // Authentication error

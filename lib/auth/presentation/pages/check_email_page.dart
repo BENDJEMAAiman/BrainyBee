@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,8 +44,9 @@ class CheckEmailPage extends StatelessWidget {
         return AuthScaffold(
           showBackButton: true,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 70.h),
+              SizedBox(height: 40.h),
 
               // Heading
               Text(
@@ -55,7 +55,7 @@ class CheckEmailPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
 
-              SizedBox(height: 8.h),
+              SizedBox(height: 12.h),
 
               // Verification message
               Text(
@@ -64,27 +64,28 @@ class CheckEmailPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
 
-              SizedBox(height: 8.h),
+              SizedBox(height: 6.h),
 
-              // User email
+              // Display the actual email used in the sign-up process
               Text(
                 email,
-                style: AppTextStyles.headingMedium,
+                style: AppTextStyles.headingMedium.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
                 textAlign: TextAlign.center,
               ),
 
-              SizedBox(height: 24.h),
+              SizedBox(height: 32.h),
 
-              // Resend message and action
-              Wrap(
-                alignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
+              // Resend message and action row
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "If you didn't receive an email? ",
                     style: AppTextStyles.headingMedium,
                   ),
-
                   GestureDetector(
                     onTap: isLoading
                         ? null
@@ -97,6 +98,7 @@ class CheckEmailPage extends StatelessWidget {
                       isLoading ? 'Sending...' : 'Resend',
                       style: AppTextStyles.headingMedium.copyWith(
                         color: AppColors.authFooterHighlight,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -104,7 +106,7 @@ class CheckEmailPage extends StatelessWidget {
               ),
 
               if (isLoading) ...[
-                SizedBox(height: 20.h),
+                SizedBox(height: 24.h),
                 const CircularProgressIndicator(),
               ],
             ],

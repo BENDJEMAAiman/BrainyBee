@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,8 +15,6 @@ import 'package:mobile_app_project/auth/presentation/widgets/auth_text_field.dar
 import 'package:mobile_app_project/auth/presentation/widgets/google_auth_button.dart';
 import 'package:mobile_app_project/core/routing/routes.dart';
 import 'package:mobile_app_project/core/theme/app_text_styles.dart';
-
-
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -60,21 +57,19 @@ class _SignInPageState extends State<SignInPage> {
       listener: (context, state) {
         // Successful authentication
         if (state is Authenticated) {
-          context.go(Routes.signIn); //need to be changed later to home 
+          context.go(Routes.signIn); //need to be changed later to home
         }
-
         // Email verification required
         else if (state is EmailVerificationRequired) {
-          context.go(Routes.checkEmail);
+          context.go(
+            Routes.checkEmail,
+            extra: _emailController.text.trim(), // Pass the email here
+          );
         }
-
         // Authentication error
         else if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-              backgroundColor: Colors.red,
-            ),
+            SnackBar(content: Text(state.message), backgroundColor: Colors.red),
           );
         }
       },
