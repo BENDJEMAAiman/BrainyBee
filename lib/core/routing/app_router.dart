@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mobile_app_project/BrainyBee/game/presentation/pages/game_screen.dart';
+import 'package:mobile_app_project/BrainyBee/game/presentation/pages/flip_match_page.dart';
 import 'package:mobile_app_project/BrainyBee/home/presentation/pages/home_screen.dart';
 import 'package:mobile_app_project/BrainyBee/presentation/pages/brainybee_shell_screen.dart';
 import 'package:mobile_app_project/BrainyBee/profile/presentation/pages/profile_screen.dart';
@@ -44,7 +44,7 @@ final GoRouter appRouter = GoRouter(
         ),
         GoRoute(
           path: Routes.game,
-          builder: (context, state) => const GameScreen(),
+          builder: (context, state) => const FlipMatchPage(),
         ),
         GoRoute(
           path: Routes.profile,
