@@ -116,7 +116,7 @@ class GameScreen extends StatelessWidget {
       },
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: AppColors.authBackground,
+          backgroundColor: Colors.white,
           body: SafeArea(
             child: Padding(
               padding: EdgeInsets.symmetric(
