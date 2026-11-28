@@ -5,8 +5,8 @@ import 'package:mobile_app_project/BrainyBee/home/presentation/widgets/sub_heade
 import 'package:mobile_app_project/core/constants/app_assets.dart';
 import 'package:mobile_app_project/core/theme/app_colors.dart';
 
-class Header extends StatelessWidget {
-  const Header({super.key});
+class RoutinesHeader extends StatelessWidget {
+  const RoutinesHeader({super.key});
 
  
 
@@ -74,8 +74,8 @@ class Header extends StatelessWidget {
         SizedBox(height: 24.h),
 
         const SubHeader(
-          title: "Welcome!",
-          subtitle: "Ready for today's adventure?",
+          title: "My Habits!",
+          subtitle: "check off your habits today!",
         ),
       ],
     );

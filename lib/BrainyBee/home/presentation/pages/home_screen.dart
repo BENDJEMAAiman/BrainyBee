@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile_app_project/BrainyBee/home/presentation/widgets/header.dart';
+import 'package:mobile_app_project/BrainyBee/home/presentation/widgets/home_header.dart';
 import 'package:mobile_app_project/core/theme/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Header(),
+                HomeHeader(),
                 
               ],
             ),
