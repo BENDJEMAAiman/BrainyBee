@@ -23,5 +23,10 @@ class AppAssets {
   static const quizIconSel = 'assets/quizSel.svg';
   static const routinesIconSel = 'assets/routinesSel.svg';
 
+  //icons
+  static const brainyIcon = 'assets/Brainy.svg';
+  static const flameIcon = 'assets/flameIcon.svg';
+  static const heartIcon = 'assets/heartIcon.svg';
+
  
 }

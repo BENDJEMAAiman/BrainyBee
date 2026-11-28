@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mobile_app_project/auth/business_logic/auth_cubit.dart';
+import 'package:mobile_app_project/BrainyBee/home/presentation/pages/home_screen.dart';
 
 import 'package:mobile_app_project/auth/presentation/pages/congratulations.dart';
 import 'package:mobile_app_project/auth/presentation/pages/sign_in.dart';
@@ -23,11 +23,8 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: Routes.splash,
       builder: (context, state) {
-        return MultiBlocProvider(
-          providers: [
-            BlocProvider(create: (_) => SplashCubit(splashRepository)),
-            BlocProvider(create: (_) => AuthCubit(authRepository)),
-          ],
+        return BlocProvider(
+          create: (_) => SplashCubit(splashRepository),
           child: const SplashPage(),
         );
       },
@@ -46,12 +43,7 @@ final GoRouter appRouter = GoRouter(
     // Sign In
     GoRoute(
       path: Routes.signIn,
-      builder: (context, state) {
-        return BlocProvider(
-          create: (_) => AuthCubit(authRepository),
-          child: const SignInPage(),
-        );
-      },
+      builder: (context, state) => const SignInPage(),
     ),
 
     // Sign Up
@@ -85,5 +77,7 @@ final GoRouter appRouter = GoRouter(
         },
       ),
     ),
+
+    GoRoute(path: Routes.home, builder: (context, state) => const HomeScreen()),
   ],
 );

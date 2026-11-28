@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,8 +16,6 @@ import 'package:mobile_app_project/auth/presentation/widgets/google_auth_button.
 import 'package:mobile_app_project/core/routing/routes.dart';
 
 import 'package:mobile_app_project/core/theme/app_text_styles.dart';
-
-
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -80,9 +77,8 @@ class _SignUpPageState extends State<SignUpPage> {
       listener: (context, state) {
         // Account created successfully
         if (state is Authenticated) {
-          context.go(Routes.signUp);
+          context.go(Routes.home);
         }
-
         // Email verification required
         else if (state is EmailVerificationRequired) {
           context.go(
@@ -90,14 +86,10 @@ class _SignUpPageState extends State<SignUpPage> {
             extra: _emailController.text.trim(), // Pass the email here
           );
         }
-
         // Authentication error
         else if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-              backgroundColor: Colors.red,
-            ),
+            SnackBar(content: Text(state.message), backgroundColor: Colors.red),
           );
         }
       },

@@ -57,7 +57,7 @@ class _SignInPageState extends State<SignInPage> {
       listener: (context, state) {
         // Successful authentication
         if (state is Authenticated) {
-          context.go(Routes.signIn); //need to be changed later to home
+          context.go(Routes.home);
         }
         // Email verification required
         else if (state is EmailVerificationRequired) {

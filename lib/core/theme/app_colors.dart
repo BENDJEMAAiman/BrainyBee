@@ -16,6 +16,7 @@ class AppColors {
   static const Color authFooterHighlight = Color(0xFF1CB0F6);
 
   static const Color amberMain = Color(0xFFFFB800);
+  static const Color brainyLogo = Color(0xFF875200);
 
   static const Color textFieldBackground = Color(0xFFF7F7F7);
   static const Color textFieldBorder = Color(0xFFE5E5E5);
