@@ -1,20 +1,57 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mobile_app_project/auth/presentation/pages/congratulations.dart';
+import 'package:mobile_app_project/auth/business_logic/auth_cubit.dart';
 
+import 'package:mobile_app_project/auth/presentation/pages/congratulations.dart';
 import 'package:mobile_app_project/auth/presentation/pages/sign_in.dart';
 import 'package:mobile_app_project/auth/presentation/pages/forgot_password_page.dart';
 import 'package:mobile_app_project/auth/presentation/pages/check_email_page.dart';
 import 'package:mobile_app_project/auth/presentation/pages/sign_up.dart';
+import 'package:mobile_app_project/core/dependecy_injection/repositories.dart';
+
 import 'package:mobile_app_project/core/routing/routes.dart';
+import 'package:mobile_app_project/onboarding/business_logic/onboarding_cubit.dart';
+import 'package:mobile_app_project/onboarding/presentation/pages/onboarding_page.dart';
+import 'package:mobile_app_project/splash/business_logic/splash_cubit.dart';
+import 'package:mobile_app_project/splash/presentation/splash_page.dart';
 
 final GoRouter appRouter = GoRouter(
-  initialLocation: Routes.signIn,
+  initialLocation: Routes.splash,
 
   routes: [
+    // Splash
+    GoRoute(
+      path: Routes.splash,
+      builder: (context, state) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => SplashCubit(splashRepository)),
+            BlocProvider(create: (_) => AuthCubit(authRepository)),
+          ],
+          child: const SplashPage(),
+        );
+      },
+    ),
+
+    GoRoute(
+      path: Routes.onboarding,
+      builder: (context, state) {
+        return BlocProvider(
+          create: (_) => OnboardingCubit(onboardingRepository),
+          child: const OnboardingPage(),
+        );
+      },
+    ),
+
     // Sign In
     GoRoute(
       path: Routes.signIn,
-      builder: (context, state) => const SignInPage(),
+      builder: (context, state) {
+        return BlocProvider(
+          create: (_) => AuthCubit(authRepository),
+          child: const SignInPage(),
+        );
+      },
     ),
 
     // Sign Up
@@ -29,7 +66,7 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const ForgotPasswordPage(),
     ),
 
-    // Check Email - Account Verification
+    // Check Email
     GoRoute(
       path: Routes.checkEmail,
       builder: (context, state) {
@@ -39,11 +76,12 @@ final GoRouter appRouter = GoRouter(
       },
     ),
 
+    // Congratulations
     GoRoute(
       path: Routes.congratulations,
       builder: (context, state) => CongratulationsPage(
         onContinue: () {
-          // We'll add the child setup navigation here later.
+          // Add child setup navigation later.
         },
       ),
     ),

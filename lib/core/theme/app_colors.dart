@@ -23,4 +23,5 @@ class AppColors {
   static const Color primaryButtonBackground = Color(0xFF1CB0F6);
   static const Color primaryButtonText = Color(0xFFFFFFFF);
   static const Color primaryButtonShadow = Color(0xFF1899D6);
+  static const Color transparent = Colors.transparent;
 }

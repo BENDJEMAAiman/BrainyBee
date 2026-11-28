@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:firebase_core/firebase_core.dart'; // 1. Import firebase_core
+import 'package:firebase_core/firebase_core.dart';
+import 'package:mobile_app_project/firebase_options.dart';
 
-import 'package:mobile_app_project/auth/business_logic/auth_cubit.dart';
 import 'package:mobile_app_project/core/dependecy_injection/repositories.dart';
 import 'package:mobile_app_project/core/routing/app_router.dart';
 
-void main() async { // 2. Make main async
+
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
-  // 3. Initialize Firebase before any Firebase services are accessed
-  await Firebase.initializeApp(); 
-  
-  // Note: If you configured Firebase using the FlutterFire CLI, use this instead:
-  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    debugPrint("Firebase initialized!");
+    await initializeDependencies();
+  } on FirebaseException catch (e) {
+    debugPrint('Firebase initialization failed: ${e.message}');
+    rethrow;
+  } catch (e) {
+    debugPrint('Unexpected error during Firebase initialization: $e');
+    rethrow;
+  }
 
   runApp(const MainApp());
 }
@@ -25,16 +34,14 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(430, 932),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) {
-        return BlocProvider(
-          create: (context) => AuthCubit(authRepository),
-          child: MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            routerConfig: appRouter,
-          ),
+      builder: (_, child) {
+        return MaterialApp.router(
+          routerConfig: appRouter,
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(fontFamily: "Nonito"),
         );
       },
     );
