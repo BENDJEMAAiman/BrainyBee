@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobile_app_project/core/constants/app_assets.dart';
 
-class ReadlyBottomNavigation extends StatelessWidget {
-  const ReadlyBottomNavigation({
+class BrainyBottomNavigation extends StatelessWidget {
+  const BrainyBottomNavigation({
     super.key,
     required this.selectedIndex,
     required this.onItemTapped,
@@ -15,10 +16,8 @@ class ReadlyBottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80.h,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-      ),
+      height: 100.h,
+      decoration: const BoxDecoration(color: Colors.white),
       child: SafeArea(
         top: false,
         child: Row(
@@ -34,20 +33,18 @@ class ReadlyBottomNavigation extends StatelessWidget {
               selectedAsset: AppAssets.routinesIconSel,
               unselectedAsset: AppAssets.routinesIcon,
             ),
-
             _buildNavigationItem(
-              index: 1,
+              index: 2,
               selectedAsset: AppAssets.quizIconSel,
               unselectedAsset: AppAssets.quizIcon,
             ),
-
             _buildNavigationItem(
-              index: 2,
+              index: 3,
               selectedAsset: AppAssets.gameIconSel,
               unselectedAsset: AppAssets.gameIcon,
             ),
             _buildNavigationItem(
-              index: 3,
+              index: 4,
               selectedAsset: AppAssets.profileIconSel,
               unselectedAsset: AppAssets.profileIcon,
             ),
@@ -72,13 +69,12 @@ class ReadlyBottomNavigation extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
+            SvgPicture.asset(
               isSelected ? selectedAsset : unselectedAsset,
-              width: 22.w,
-              height: 22.h,
+              width: 40.w,
+              height: 40.h,
             ),
             SizedBox(height: 4.h),
-            
           ],
         ),
       ),

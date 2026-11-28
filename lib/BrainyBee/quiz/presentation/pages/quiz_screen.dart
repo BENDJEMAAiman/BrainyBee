@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mobile_app_project/BrainyBee/quiz/presentation/widgets/quiz_header.dart';
 import 'package:mobile_app_project/core/theme/app_colors.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -22,7 +23,7 @@ class _QuizScreenState extends State<QuizScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                QuizScreen(),
+                QuizHeader(),
                 
               ],
             ),
